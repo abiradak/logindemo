@@ -8,18 +8,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  id: any;
 
   constructor(
     private router: Router
   ) { }
 
   ngOnInit() {
+    this.getId();
+  }
+  getId(){
+    this.id = localStorage.getItem("ID");
   }
 
   logout(){
     localStorage.removeItem("ID");
     this.router.navigate(['login']);
   }
-
-  
 }

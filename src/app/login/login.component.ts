@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       this.spinner.show();
       console.log('my data......',sendData);
       let data = this.userService.login(sendData);
-      if(data  == true){
+      if(data == true){
         this.userService.alertForSuccess("You Have Successfully Logged In","Success");
         this.router.navigate(['about']);
         this.spinner.hide();

@@ -1,18 +1,29 @@
 import { Injectable } from '@angular/core';
 import { v4 as uuid } from 'uuid';
 import { ToastrService } from 'ngx-toastr';
+import { Subject, BehaviorSubject } from "rxjs";
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  
+  // private emitChangeSource = new Subject<any>();
+  // changeEmitted$ = this.emitChangeSource.asObservable();
+
+  private messageSource = new BehaviorSubject("");
+  currentMessage = this.messageSource.asObservable();
+
+  // emitChange(data: string){
+  //   this.emitChangeSource.next(data);
+  // }
 
   constructor(
     private toastr: ToastrService
-  ) { 
-    
+  ) { }
+
+  changeMessage(message: string){
+    this.messageSource.next(message);
   }
 
   login(sendData){
